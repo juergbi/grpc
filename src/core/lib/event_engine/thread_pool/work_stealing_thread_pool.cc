@@ -393,8 +393,8 @@ WorkStealingThreadPool::WorkStealingThreadPoolImpl::Lifeguard::Lifeguard(
           .set_initial_backoff(kLifeguardStartMinSleep)
           .set_max_backoff(kLifeguardStartMaxSleep)
           .set_multiplier(1.3));
-  grpc_core::Timestamp deadline = grpc_core::Timestamp::Now() +
-                                  kLifeguardStartTimeout;
+  grpc_core::Timestamp deadline =
+      grpc_core::Timestamp::Now() + kLifeguardStartTimeout;
   while (true) {
     bool success = false;
     grpc_core::Thread thread(
